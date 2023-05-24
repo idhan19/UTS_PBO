@@ -1,0 +1,66 @@
+package student_package;
+public class Person {
+    private String nama; // atribut di class ini
+    private String NoHp;
+
+    public void setNama(String nama){ // pengimplementasian enkapsulasi dengan method setter getter 
+        this.nama = nama;
+    }
+    public void setNoHp(String NoHp){
+        this.NoHp = NoHp;
+    }
+    public String getNama(){
+        return nama;
+    }
+    public String getNoHp(){
+        return NoHp;
+    }
+
+    public void tentangTiket(){ //pembuatan method tentang tiket
+        System.out.println("Informasi Tiket");
+    }
+    
+}
+package student_package;
+import java.util.Scanner;
+public class TiketApp {
+    public static void main(String[] args) {
+        Scanner input = new Scanner (System.in);
+        Person orang = new Person();
+        Tiket tiket = new Tiket();
+
+        System.out.println("===Progam Cek Tiket===");
+        System.out.print("Masukkan Nama\t\t: ");
+        orang.setNama(input.nextLine());
+        System.out.print("Masukkan No Hp\t\t: ");
+        orang.setNoHp(input.nextLine());
+        System.out.print("Masukkan No Tiket\t: ");
+        tiket.setTiket(input.nextLine());
+
+
+        System.out.println("=================================");
+        System.out.println("\n==Biodata dan Keterangan Tiket==");
+        System.out.println("Nama\t\t: "+orang.getNama());
+        System.out.println("No Hp\t\t: "+orang.getNoHp());
+        System.out.println("No Tiket\t: "+tiket.getTiket());
+        System.out.print("Keterangan\t: ");
+        tiket.tentangTiket();
+        
+    }
+}
+package student_package;
+public class Tiket extends Person { //inheritance dari parent class person
+    public String noTiket; // atribut yang dibikin
+
+    public void setTiket(String noTiket){ //pengimplementasian enkapsulasi dengan metode setter getter
+        this.noTiket = noTiket;
+    }
+    public String getTiket(){
+        return noTiket;
+    }
+
+    @Override
+    public void tentangTiket(){
+        System.out.println("Tiket Tersedia"); // Polymorphism dari parent class Person
+    }    
+}
